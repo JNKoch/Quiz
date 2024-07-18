@@ -65,7 +65,7 @@ public class Data {
         AnswerFactory answerFactory = new AnswerFactory();
         QuizItemFactory quizItemFactory = new QuizItemFactory();
 
-        //fileRepository.create("Wer steht im Finale;Deutschland;Spanien*;");
+        //fileRepository.create("Was ist die Hauptstadt von Frankreich?;Berlin;Madrid;Paris*;Rom");
         List<String> lines = fileRepository.readAllLines();
 
         for (int i = 0; i < lines.size(); i++) {
