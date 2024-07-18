@@ -56,11 +56,10 @@ public class Data {
     public ArrayList<QuizItem> getQAndAFromFile() throws IOException {
         final String DELIMITER = ";";
         final String RIGHT_ANSWER = "*";
-        String[] data;
         String question;
         String line;
+        String[] data;
 
-        ArrayList<Answer> Answers = new ArrayList<>();
         ArrayList<QuizItem> quizItems = new ArrayList<>();
         FileRepository fileRepository = new QuizItemFileRepository("src/QuizLogic/Data.txt");
         AnswerFactory answerFactory = new AnswerFactory();
@@ -70,23 +69,24 @@ public class Data {
         List<String> lines = fileRepository.readAllLines();
 
         for (int i = 0; i < lines.size(); i++) {
+            ArrayList<Answer> Answers = new ArrayList<>();
             line = fileRepository.readLine(i);
             data = line.split(DELIMITER);
             question = data[0].trim();
-            System.out.println(data.length);
-            for (int j = 1; j <= 2; j++) {
+            for (int j = 1; j <= data.length -1; j++) {
+
                 String textAnswer = data[j].trim();
+                Answer answer;
                 if (textAnswer.endsWith(RIGHT_ANSWER)) {
-                    Answer answer = answerFactory.createRightAnswer();
+                    answer = answerFactory.createRightAnswer();
                     answer.inputAnswer(textAnswer.substring(0, textAnswer.length() - 1));
-                    Answers.add(answer);
                 } else {
-                    Answer answer = answerFactory.createWrongAnswer();
+                    answer = answerFactory.createWrongAnswer();
                     answer.inputAnswer(textAnswer);
-                    Answers.add(answer);
                 }
-                quizItems.add(quizItemFactory.createQuizItemString(question, Answers));
+                Answers.add(answer);
             }
+            quizItems.add(quizItemFactory.createQuizItemString(question, Answers));
         }
         return quizItems;
     }
