@@ -13,7 +13,7 @@ public class Console {
         int check = 0;
         do {
             if (input < minInput || input > max) {
-                Ausgabe("Falsche Eingabe nochmal eingeben");
+                print("Falsche Eingabe nochmal eingeben");
                 input = inputWithScanner();
             } else check = 1;
         } while (check == 0);
@@ -38,7 +38,7 @@ public class Console {
             } catch (InputMismatchException ex) {
                 scanner.next();
                 exceptionHandler = 0;
-                Ausgabe("Bitte nur eine Zahl und keine Buchstaben eingeben");
+                print("Bitte nur eine Zahl und keine Buchstaben eingeben");
             }
         } while (exceptionHandler == 0);
 
@@ -50,13 +50,6 @@ public class Console {
                 Das Menü
                 (1) Das Quiz beginnen
                 (2) Das Quiz beenden""");
-    }
-    public static String Ausgabe(String ausgabe) {
-        String str = ("-------------------------------" + "\n" +
-                ausgabe + "\n" +
-                "-------------------------------" + "\n");
-        System.out.println(str);
-        return str;
     }
 
     public void printFinalScores(int rightAnswers, int wrongAnswers) {
