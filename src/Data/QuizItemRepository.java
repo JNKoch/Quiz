@@ -12,5 +12,5 @@ public interface QuizItemRepository extends Repository<String,Integer>{
     void update(Integer lineNumber, String newline) throws IOException;
     void delete(Integer lineNumber) throws IOException;
 
-    void delete(String filePath) throws IOException;
+    void deleteAll() throws IOException;
 }

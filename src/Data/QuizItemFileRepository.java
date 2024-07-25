@@ -56,12 +56,12 @@ public class QuizItemFileRepository implements QuizItemRepository {
     }
 
     @Override
-    public void delete(String filePath) throws IOException {
-        Files.deleteIfExists(Path.of(filePath));
+    public void deleteAll() throws IOException {
+        Files.deleteIfExists(FILE_PATH);
     }
 
-    public void testStart() {
-        try {
+    public void testStart() throws IOException{
+
             QuizItemRepository fileRepository = new QuizItemFileRepository("Quiz_Covis/src/DasQuiz4/DataTest.txt");
             fileRepository.create("Dies ist eine neue Zeile.");
 
@@ -80,8 +80,6 @@ public class QuizItemFileRepository implements QuizItemRepository {
 
             lines = fileRepository.readAll();
             lines.forEach(System.out::println);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 }

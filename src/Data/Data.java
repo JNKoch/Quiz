@@ -57,7 +57,6 @@ public class Data {
         final String DELIMITER = ";";
         final String RIGHT_ANSWER = "*";
         String question;
-        String line;
         String[] data;
 
         ArrayList<QuizItem> quizItems = new ArrayList<>();
@@ -68,9 +67,8 @@ public class Data {
         //QuizItemRepository.create("Was ist die Hauptstadt von Frankreich?;Berlin;Madrid;Paris*;Rom");
         List<String> lines = QuizItemRepository.readAll();
 
-        for (int i = 0; i < lines.size(); i++) {
+        for (String line : lines) {
             ArrayList<Answer> Answers = new ArrayList<>();
-            line = QuizItemRepository.readByLine(i);
             data = line.split(DELIMITER);
             question = data[0].trim();
             for (int j = 1; j <= data.length -1; j++) {
