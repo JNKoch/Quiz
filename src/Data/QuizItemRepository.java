@@ -3,7 +3,7 @@ package Data;
 import java.io.IOException;
 import java.util.List;
 
-public interface FileRepository {
+public interface QuizItemRepository {
 
     List<String> readAllLines() throws IOException;
 

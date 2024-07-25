@@ -61,16 +61,16 @@ public class Data {
         String[] data;
 
         ArrayList<QuizItem> quizItems = new ArrayList<>();
-        FileRepository fileRepository = new QuizItemFileRepository("src/QuizLogic/Data.txt");
+        QuizItemRepository QuizItemRepository = new QuizItemFileRepository("src/QuizLogic/Data.txt");
         AnswerFactory answerFactory = new AnswerFactory();
         QuizItemFactory quizItemFactory = new QuizItemFactory();
 
-        //fileRepository.create("Was ist die Hauptstadt von Frankreich?;Berlin;Madrid;Paris*;Rom");
-        List<String> lines = fileRepository.readAllLines();
+        //QuizItemRepository.create("Was ist die Hauptstadt von Frankreich?;Berlin;Madrid;Paris*;Rom");
+        List<String> lines = QuizItemRepository.readAllLines();
 
         for (int i = 0; i < lines.size(); i++) {
             ArrayList<Answer> Answers = new ArrayList<>();
-            line = fileRepository.readLine(i);
+            line = QuizItemRepository.readLine(i);
             data = line.split(DELIMITER);
             question = data[0].trim();
             for (int j = 1; j <= data.length -1; j++) {

@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
-public class QuizItemFileRepository implements FileRepository{
+public class QuizItemFileRepository implements QuizItemRepository {
 
     private final Path FILE_PATH;
 
@@ -62,7 +62,7 @@ public class QuizItemFileRepository implements FileRepository{
 
     public void testStart() {
         try {
-            FileRepository fileRepository = new QuizItemFileRepository("Quiz_Covis/src/DasQuiz4/DataTest.txt");
+            QuizItemRepository fileRepository = new QuizItemFileRepository("Quiz_Covis/src/DasQuiz4/DataTest.txt");
             fileRepository.create("Dies ist eine neue Zeile.");
 
             List<String> lines = fileRepository.readAllLines();
