@@ -16,7 +16,7 @@ public class QuizItemFileRepository implements QuizItemRepository {
     }
 
     @Override
-    public List<String> readAllLines() throws IOException {
+    public List<String> readAll() throws IOException {
 
         return Files.readAllLines(FILE_PATH);
     }
@@ -27,8 +27,8 @@ public class QuizItemFileRepository implements QuizItemRepository {
     }
 
     @Override
-    public String readLine(int lineNumber) throws IOException {
-        List<String> lines = readAllLines();
+    public String readByLine(Integer lineNumber) throws IOException {
+        List<String> lines = readAll();
         if (lineNumber < 0 || lineNumber >= lines.size()) {
             throw new IndexOutOfBoundsException("Ungültige Zeilennummer: " + lineNumber);
         }
@@ -36,8 +36,8 @@ public class QuizItemFileRepository implements QuizItemRepository {
     }
 
     @Override
-    public void updateLine(int lineNumber, String newline) throws IOException {
-        List<String> lines = readAllLines();
+    public void update(Integer lineNumber, String newline) throws IOException {
+        List<String> lines = readAll();
         if (lineNumber < 0 || lineNumber >= lines.size()) {
             throw new IndexOutOfBoundsException("Ungültige Zeilennummer: " + lineNumber);
         }
@@ -46,8 +46,8 @@ public class QuizItemFileRepository implements QuizItemRepository {
     }
 
     @Override
-    public void deleteLine(int lineNumber) throws IOException {
-        List<String> lines = readAllLines();
+    public void delete(Integer lineNumber) throws IOException {
+        List<String> lines = readAll();
         if (lineNumber < 0 || lineNumber >= lines.size()) {
             throw new IndexOutOfBoundsException("Ungültige Zeilennummer: " + lineNumber);
         }
@@ -65,20 +65,20 @@ public class QuizItemFileRepository implements QuizItemRepository {
             QuizItemRepository fileRepository = new QuizItemFileRepository("Quiz_Covis/src/DasQuiz4/DataTest.txt");
             fileRepository.create("Dies ist eine neue Zeile.");
 
-            List<String> lines = fileRepository.readAllLines();
+            List<String> lines = fileRepository.readAll();
             lines.forEach(System.out::println);
 
-            String line = fileRepository.readLine(0);
+            String line = fileRepository.readByLine(0);
             System.out.println("\n Zeile 1: " + line + "\n");
 
-            fileRepository.updateLine(2, "Dies ist die aktualisierte Zeile.");
+            fileRepository.update(2, "Dies ist die aktualisierte Zeile.");
 
-            line = fileRepository.readLine(1);
+            line = fileRepository.readByLine(1);
             System.out.println("\n Aktualisierte Zeile 1: " + line +"\n");
 
-            fileRepository.deleteLine(4);
+            fileRepository.delete(4);
 
-            lines = fileRepository.readAllLines();
+            lines = fileRepository.readAll();
             lines.forEach(System.out::println);
         } catch (IOException e) {
             throw new RuntimeException(e);

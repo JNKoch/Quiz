@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.List;
 
 public interface Repository <T,K>{
-    List<T> read() throws IOException;
+    List<T> readAll() throws IOException;
 
-    T create(T name) throws IOException;
-    T readById(K id) throws IOException;
-    T update(T name);
-    T delete(T name);
+    void create(T file) throws IOException;
+    T readByLine(K id) throws IOException;
+    void update(K line, T newLine) throws IOException;;
+    void delete(K line) throws IOException;;
 }
 

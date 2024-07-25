@@ -66,11 +66,11 @@ public class Data {
         QuizItemFactory quizItemFactory = new QuizItemFactory();
 
         //QuizItemRepository.create("Was ist die Hauptstadt von Frankreich?;Berlin;Madrid;Paris*;Rom");
-        List<String> lines = QuizItemRepository.readAllLines();
+        List<String> lines = QuizItemRepository.readAll();
 
         for (int i = 0; i < lines.size(); i++) {
             ArrayList<Answer> Answers = new ArrayList<>();
-            line = QuizItemRepository.readLine(i);
+            line = QuizItemRepository.readByLine(i);
             data = line.split(DELIMITER);
             question = data[0].trim();
             for (int j = 1; j <= data.length -1; j++) {
