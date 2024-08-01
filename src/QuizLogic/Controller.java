@@ -25,7 +25,7 @@ public class Controller {
     }
 
     public void start() throws IOException {
-        ArrayList<QuizItem> quizItems = quizItemFileRepository.getQAndAFromFile() ;
+        ArrayList<QuizItem> quizItems = quizItemFileRepository.getFromFile() ;
         console.menu();
         switch (console.rangeOfInput(2)) {
             case START:// sachen liste übergeben

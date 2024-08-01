@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        //QuizItemFileRepository fileRepository = new QuizItemFileRepository("src/QuizLogic/DataTest.txt");
-        //fileRepository.testStart();
-        Controller controller = new Controller();
-        controller.start();
+        QuizItemFileRepository fileRepository = new QuizItemFileRepository("src/QuizLogic/DataTest.txt");
+        fileRepository.testStart();
+        //Controller controller = new Controller();
+        //controller.start();
     }
 }

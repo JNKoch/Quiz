@@ -2,6 +2,7 @@ package Data;
 
 import QuizLogic.Answer.Answer;
 import QuizLogic.Answer.AnswerFactory;
+import QuizLogic.Answer.RightAnswer;
 import QuizLogic.QuizItemPackage.*;
 
 import java.io.IOException;
@@ -15,6 +16,8 @@ import java.util.List;
 public class QuizItemFileRepository implements QuizItemRepository {
 
     private final Path FILE_PATH;
+    private final String DELIMITER = ";";
+    private final String RIGHT_ANSWER = "*";
 
     public QuizItemFileRepository(String fileName) {
         this.FILE_PATH = Paths.get(fileName);
@@ -56,7 +59,16 @@ public class QuizItemFileRepository implements QuizItemRepository {
         if (lineNumber < 0 || lineNumber >= lines.size()) {
             throw new IndexOutOfBoundsException("Ungültige Zeilennummer: " + lineNumber);
         } else {
-            newLine = quizItem.toFileVersion();
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(quizItem.getQuestion()).append(DELIMITER);
+            for (Answer answer : quizItem.getAnswers()) {
+                if (answer instanceof RightAnswer) {
+                    stringBuilder.append(answer.getAnswer()).append(RIGHT_ANSWER).append(DELIMITER);
+                } else {
+                    stringBuilder.append(answer.getAnswer()).append(DELIMITER);
+                }
+            }
+            newLine = String.valueOf(stringBuilder);
         }
 
         lines.set(lineNumber, newLine);
@@ -78,9 +90,7 @@ public class QuizItemFileRepository implements QuizItemRepository {
         Files.deleteIfExists(FILE_PATH);
     }
 
-    public ArrayList<QuizItem> getQAndAFromFile() throws IOException {
-        final String DELIMITER = ";";
-        final String RIGHT_ANSWER = "*";
+    public ArrayList<QuizItem> getFromFile() throws IOException {
         String question;
         String[] data;
 

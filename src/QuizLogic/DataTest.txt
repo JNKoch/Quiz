@@ -1,1 +1,6 @@
-Wie viel ist 5*5;25*;23;Dies ist eine neue Zeile.
+
+Wie viel ist 5*5;null*;null;
+Dies ist die aktualisierte Zeile.
+Dies ist eine neue Zeile.
+Dies ist eine neue Zeile.
+Dies ist eine neue Zeile.

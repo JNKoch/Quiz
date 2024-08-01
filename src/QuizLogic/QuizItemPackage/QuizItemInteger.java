@@ -6,13 +6,24 @@ import QuizLogic.Answer.RightAnswer;
 import java.util.ArrayList;
 
 public class QuizItemInteger implements QuizItem {
-    public String question;
-    public ArrayList<Answer> answers;
+    private final String question;
+    private final ArrayList<Answer> answers;
 
     public QuizItemInteger(String question, ArrayList<Answer> answers) {
         this.question = question;
         this.answers = answers;
     }
+
+    @Override
+    public String getQuestion() {
+        return question;
+    }
+
+    @Override
+    public ArrayList<Answer> getAnswers() {
+        return answers;
+    }
+
     @Override
     public boolean checkAnswers(int input) {
         int changeListNumberBy = 1;
@@ -36,18 +47,5 @@ public class QuizItemInteger implements QuizItem {
         return answers.size();
     }
 
-    @Override
-    public String toFileVersion() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(question).append(";");
-        for (Answer answer : answers) {
-            if (answer instanceof RightAnswer) {
-                stringBuilder.append(answer.getAnswerInt()).append("*").append(";");
-            } else {
-                stringBuilder.append(answer.getAnswerInt()).append(";");
-            }
-        }
-        return String.valueOf(stringBuilder);
-    }
 }
 
