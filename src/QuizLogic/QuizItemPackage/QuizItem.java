@@ -7,4 +7,7 @@ public interface QuizItem {
     void printQuizItems();
 
     int returnAnswersSize();
+
+    String toFileVersion();
+
 }

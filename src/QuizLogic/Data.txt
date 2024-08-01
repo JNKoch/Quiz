@@ -1,10 +1,10 @@
-Was ist die Hauptstadt von Frankreich?;Berlin;Madrid;Paris*;Rom
-Welches dieser Tiere ist ein Säugetier?;Adler;Löwe*;Krokodil;Hai
-Welche Farbe entsteht durch die Mischung von Blau und Gelb?;Rot;Grün*;Lila;Orange
-Welche dieser Früchte ist eine Zitrusfrucht?;Apfel;Banane;Traube;Orange*
-Was ist die chemische Formel für Salz?;H2O;NaCl*;CO2;O2
-Welche dieser Städte liegt in Japan?;Seoul;Bangkok;Tokio*;Shanghai
-Welche dieser Sportarten ist ein Mannschaftssport?;Fußball*;Tennis;Golf;Boxen
-Welches dieser Länder liegt in Afrika?;Brasilien;Kanada;Australien;Nigeria*
-Welche dieser Figuren stammt aus der griechischen Mythologie?;Thor;Odin;Zeus*;Anubis
-Welches dieser Elemente ist ein Edelgas?;Helium*;Sauerstoff;Stickstoff;Kohlenstoff
+Was ist die Hauptstadt von Frankreich?;Berlin;Madrid;Paris*;Rom;
+Welches dieser Tiere ist ein Säugetier?;Adler;Löwe*;Krokodil;Hai;
+Welche Farbe entsteht durch die Mischung von Blau und Gelb?;Rot;Grün*;Lila;Orange;
+Welche dieser Früchte ist eine Zitrusfrucht?;Apfel;Banane;Traube;Orange*;
+Was ist die chemische Formel für Salz?;H2O;NaCl*;CO2;O2;
+Welche dieser Städte liegt in Japan?;Seoul;Bangkok;Tokio*;Shanghai;
+Welche dieser Sportarten ist ein Mannschaftssport?;Fußball*;Tennis;Golf;Boxen;
+Welches dieser Länder liegt in Afrika?;Brasilien;Kanada;Australien;Nigeria*;
+Welche dieser Figuren stammt aus der griechischen Mythologie?;Thor;Odin;Zeus*;Anubis;
+Welches dieser Elemente ist ein Edelgas?;Helium*;Sauerstoff;Stickstoff;Kohlenstoff;

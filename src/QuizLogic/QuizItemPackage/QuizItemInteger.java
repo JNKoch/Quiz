@@ -35,5 +35,19 @@ public class QuizItemInteger implements QuizItem {
     public int returnAnswersSize() {
         return answers.size();
     }
+
+    @Override
+    public String toFileVersion() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(question).append(";");
+        for (Answer answer : answers) {
+            if (answer instanceof RightAnswer) {
+                stringBuilder.append(answer.getAnswerInt()).append("*").append(";");
+            } else {
+                stringBuilder.append(answer.getAnswerInt()).append(";");
+            }
+        }
+        return String.valueOf(stringBuilder);
+    }
 }
 

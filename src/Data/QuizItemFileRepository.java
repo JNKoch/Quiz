@@ -1,10 +1,15 @@
 package Data;
 
+import QuizLogic.Answer.Answer;
+import QuizLogic.Answer.AnswerFactory;
+import QuizLogic.QuizItemPackage.*;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuizItemFileRepository implements QuizItemRepository {
@@ -45,6 +50,19 @@ public class QuizItemFileRepository implements QuizItemRepository {
         Files.write(FILE_PATH, lines);
     }
 
+    public void updateWithQuizItem(Integer lineNumber, QuizItem quizItem) throws IOException {
+        List<String> lines = readAll();
+        String newLine;
+        if (lineNumber < 0 || lineNumber >= lines.size()) {
+            throw new IndexOutOfBoundsException("Ungültige Zeilennummer: " + lineNumber);
+        } else {
+            newLine = quizItem.toFileVersion();
+        }
+
+        lines.set(lineNumber, newLine);
+        Files.write(FILE_PATH, lines);
+    }
+
     @Override
     public void delete(Integer lineNumber) throws IOException {
         List<String> lines = readAll();
@@ -62,24 +80,38 @@ public class QuizItemFileRepository implements QuizItemRepository {
 
     public void testStart() throws IOException{
 
-            QuizItemRepository fileRepository = new QuizItemFileRepository("Quiz_Covis/src/DasQuiz4/DataTest.txt");
-            fileRepository.create("Dies ist eine neue Zeile.");
 
-            List<String> lines = fileRepository.readAll();
-            lines.forEach(System.out::println);
+        this.create("Dies ist eine neue Zeile.");
 
-            String line = fileRepository.readByLine(0);
-            System.out.println("\n Zeile 1: " + line + "\n");
+        List<String> lines = this.readAll();
+        lines.forEach(System.out::println);
 
-            fileRepository.update(2, "Dies ist die aktualisierte Zeile.");
+        String line = this.readByLine(0);
+        System.out.println("\n Zeile 1: " + line + "\n");
 
-            line = fileRepository.readByLine(1);
-            System.out.println("\n Aktualisierte Zeile 1: " + line +"\n");
+        this.update(2, "Dies ist die aktualisierte Zeile.");
 
-            fileRepository.delete(4);
+        line = this.readByLine(1);
+        System.out.println("\n Aktualisierte Zeile 1: " + line +"\n");
 
-            lines = fileRepository.readAll();
-            lines.forEach(System.out::println);
+        this.delete(4);
+
+        lines = this.readAll();
+        lines.forEach(System.out::println);
+
+        AnswerFactory answerFactory = new AnswerFactory();
+        ArrayList<Answer> Answers1 = new ArrayList<>();
+        String question1 = "Wie viel ist 5*5";
+
+        Answer answer1 = answerFactory.createRightAnswer();
+        answer1.inputAnswerInt(25);
+        Answers1.add(answer1);
+
+        Answer answer2 = answerFactory.createWrongAnswer();
+        answer2.inputAnswerInt(23);
+        Answers1.add(answer2);
+
+        updateWithQuizItem(1, new QuizItemInteger(question1,Answers1));
 
     }
 }
