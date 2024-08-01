@@ -78,6 +78,41 @@ public class QuizItemFileRepository implements QuizItemRepository {
         Files.deleteIfExists(FILE_PATH);
     }
 
+    public ArrayList<QuizItem> getQAndAFromFile() throws IOException {
+        final String DELIMITER = ";";
+        final String RIGHT_ANSWER = "*";
+        String question;
+        String[] data;
+
+        ArrayList<QuizItem> quizItems = new ArrayList<>();
+        AnswerFactory answerFactory = new AnswerFactory();
+        QuizItemFactory quizItemFactory = new QuizItemFactory();
+
+        //QuizItemRepository.create("Was ist die Hauptstadt von Frankreich?;Berlin;Madrid;Paris*;Rom");
+        List<String> lines = this.readAll();
+
+        for (String line : lines) {
+            ArrayList<Answer> Answers = new ArrayList<>();
+            data = line.split(DELIMITER);
+            question = data[0].trim();
+            for (int j = 1; j <= data.length -1; j++) {
+
+                String textAnswer = data[j].trim();
+                Answer answer;
+                if (textAnswer.endsWith(RIGHT_ANSWER)) {
+                    answer = answerFactory.createRightAnswer();
+                    answer.inputAnswer(textAnswer.substring(0, textAnswer.length() - 1));
+                } else {
+                    answer = answerFactory.createWrongAnswer();
+                    answer.inputAnswer(textAnswer);
+                }
+                Answers.add(answer);
+            }
+            quizItems.add(quizItemFactory.createQuizItemString(question, Answers));
+        }
+        return quizItems;
+    }
+
     public void testStart() throws IOException{
 
 
