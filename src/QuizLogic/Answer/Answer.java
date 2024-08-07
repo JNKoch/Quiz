@@ -2,11 +2,8 @@ package QuizLogic.Answer;
 
 public interface Answer {
 
-        String getAnswer();
-        int getAnswerInt();
+        Object getAnswer();
 
-        void inputAnswer(String answer);
-
-        void inputAnswerInt(int answer);
+        void inputAnswer(Object answer);
 
 }

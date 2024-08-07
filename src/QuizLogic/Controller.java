@@ -1,6 +1,6 @@
 package QuizLogic;
 
-import Data.Data;
+import Data.*;
 import FrontEnd.Console;
 import QuizLogic.QuizItemPackage.QuizItem;
 
@@ -15,15 +15,17 @@ public class Controller {
     final int EXIT = 2;
     Console console;
     Data data;
+    QuizItemFileRepository quizItemFileRepository;
 
     public Controller() {
 
         data = new Data();
         console = new Console();
+        quizItemFileRepository = new QuizItemFileRepository("src/QuizLogic/Data.txt");
     }
 
     public void start() throws IOException {
-        ArrayList<QuizItem> quizItems = data.getQAndAFromFile();
+        ArrayList<QuizItem> quizItems = quizItemFileRepository.getFromFile();
         console.menu();
         switch (console.rangeOfInput(2)) {
             case START:// sachen liste übergeben

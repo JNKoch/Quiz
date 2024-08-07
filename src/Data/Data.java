@@ -29,11 +29,11 @@ public class Data {
         String question1 = "Wie viel ist 5*5";
 
         Answer answer1 = answerFactory.createRightAnswer();
-        answer1.inputAnswerInt(25);
+        answer1.inputAnswer(25);
         Answers1.add(answer1);
 
         Answer answer2 = answerFactory.createWrongAnswer();
-        answer2.inputAnswerInt(23);
+        answer2.inputAnswer(23);
         Answers1.add(answer2);
         quizItems.add(quizItemFactory.createQuizItemInt(question1, Answers1));
 
@@ -53,39 +53,5 @@ public class Data {
         return quizItems;
     }
 
-    public ArrayList<QuizItem> getQAndAFromFile() throws IOException {
-        final String DELIMITER = ";";
-        final String RIGHT_ANSWER = "*";
-        String question;
-        String[] data;
 
-        ArrayList<QuizItem> quizItems = new ArrayList<>();
-        QuizItemRepository QuizItemRepository = new QuizItemFileRepository("src/QuizLogic/Data.txt");
-        AnswerFactory answerFactory = new AnswerFactory();
-        QuizItemFactory quizItemFactory = new QuizItemFactory();
-
-        //QuizItemRepository.create("Was ist die Hauptstadt von Frankreich?;Berlin;Madrid;Paris*;Rom");
-        List<String> lines = QuizItemRepository.readAll();
-
-        for (String line : lines) {
-            ArrayList<Answer> Answers = new ArrayList<>();
-            data = line.split(DELIMITER);
-            question = data[0].trim();
-            for (int j = 1; j <= data.length -1; j++) {
-
-                String textAnswer = data[j].trim();
-                Answer answer;
-                if (textAnswer.endsWith(RIGHT_ANSWER)) {
-                    answer = answerFactory.createRightAnswer();
-                    answer.inputAnswer(textAnswer.substring(0, textAnswer.length() - 1));
-                } else {
-                    answer = answerFactory.createWrongAnswer();
-                    answer.inputAnswer(textAnswer);
-                }
-                Answers.add(answer);
-            }
-            quizItems.add(quizItemFactory.createQuizItemString(question, Answers));
-        }
-        return quizItems;
-    }
 }
