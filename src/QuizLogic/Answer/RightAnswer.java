@@ -1,29 +1,20 @@
 package QuizLogic.Answer;
 
 public class RightAnswer implements Answer {
-    String rightAnswer;
+    Object rightAnswer;
     int rightAnswerInt;
 
     public RightAnswer() {
     }
 
 
-    public String getAnswer() {
-        return rightAnswer;
+    public Object getAnswer() {
+        return rightAnswer.toString();
     }
 
     @Override
-    public int getAnswerInt() {
-        return rightAnswerInt;
-    }
-
-    @Override
-    public void inputAnswer(String answer) {
+    public void inputAnswer(Object answer) {
         this.rightAnswer = answer;
     }
 
-    @Override
-    public void inputAnswerInt(int answer) {
-        this.rightAnswerInt = answer;
-    }
 }

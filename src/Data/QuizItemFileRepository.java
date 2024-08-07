@@ -149,11 +149,11 @@ public class QuizItemFileRepository implements QuizItemRepository {
         String question1 = "Wie viel ist 5*5";
 
         Answer answer1 = answerFactory.createRightAnswer();
-        answer1.inputAnswerInt(25);
+        answer1.inputAnswer(25);
         Answers1.add(answer1);
 
         Answer answer2 = answerFactory.createWrongAnswer();
-        answer2.inputAnswerInt(23);
+        answer2.inputAnswer(23);
         Answers1.add(answer2);
 
         updateWithQuizItem(1, new QuizItemInteger(question1,Answers1));

@@ -29,11 +29,11 @@ public class Data {
         String question1 = "Wie viel ist 5*5";
 
         Answer answer1 = answerFactory.createRightAnswer();
-        answer1.inputAnswerInt(25);
+        answer1.inputAnswer(25);
         Answers1.add(answer1);
 
         Answer answer2 = answerFactory.createWrongAnswer();
-        answer2.inputAnswerInt(23);
+        answer2.inputAnswer(23);
         Answers1.add(answer2);
         quizItems.add(quizItemFactory.createQuizItemInt(question1, Answers1));
 

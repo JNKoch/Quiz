@@ -37,7 +37,7 @@ public class QuizItemInteger implements QuizItem {
         System.out.println("-------------------------------");
         System.out.println(question);
         for (int i = 0; i < answers.size(); i++) {
-            System.out.println("("+(i+1)+") "+ answers.get(i).getAnswerInt());
+            System.out.println("("+(i+1)+") "+ answers.get(i).getAnswer());
         }
         System.out.println("-------------------------------");
     }
